@@ -1,0 +1,14 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: wisecow-file-protection
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: wisecow
+  file:
+    matchPaths:
+    - /etc/shadow
+    - /etc/passwd
+  action: Block
